@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Suspense} from 'react';
+import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
+import './App.scss';
+import Home from './container/Home/Home';
+import SingleCountry from './container/SingleCountry/SingleCountry';
 
-function App() {
+const App = (props) => {
+
+  const showSingleCountry = (countryName) => {
+    props.history.push(`/countries/${countryName}`)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={'Loading...'}>
+        <Switch>
+          <Route path="/countries" render={() => <SingleCountry />} />
+          <Route path="/" exact render={() => <Home clicked={showSingleCountry} />} />
+          <Redirect to="/" />
+        </Switch>
+      </Suspense>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
