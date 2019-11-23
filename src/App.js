@@ -1,6 +1,5 @@
 import React, {Suspense} from 'react';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
-import './App.scss';
 import Home from './container/Home/Home';
 import SingleCountry from './container/SingleCountry/SingleCountry';
 

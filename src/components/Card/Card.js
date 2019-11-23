@@ -2,12 +2,16 @@ import React from 'react';
 
 const Card = (props) => {
   return (
-    <div onClick={() => props.clicked(props.name)}>
-      <img src={props.flag}/>
-      <p>{props.name}</p>
-      <p>{props.capital}</p>
-      <p>{props.region}</p>
-      <p>{props.population}</p>
+    <div
+      className="card"
+      onClick={() => props.clicked(props.name)}>
+      <img src={props.flag} alt="Flag"/>
+      <div>
+        <p>{props.name}</p>
+        <p><span>Population: </span>{props.population}</p>
+        <p><span>Region: </span>{props.region}</p>
+        <p><span>Capital: </span>{props.capital}</p>
+      </div>
     </div>
   )
 }

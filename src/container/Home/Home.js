@@ -3,6 +3,7 @@ import axios from 'axios';
 import Card from '../../components/Card/Card';
 import Spinner from '../../components/Spinner/Spinner';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import Header from '../../components/Header/Header';
 
 const Home = ({clicked}) => {
 
@@ -90,18 +91,19 @@ const Home = ({clicked}) => {
 
   return (
     <div className="App">
-      <div>
-        <h1>Where in the world?</h1>
-      </div>
-      <div>
+      <Header />
+      <div className="form">
         <input
           placeholder="Search for a country..."
           onChange={inputChangeHandler}
           onKeyUp={submitHandler}
           value={inputValue}/>
-        <Dropdown select={selectChangeHandler} />
+        <div className="dropdown">
+          <Dropdown select={selectChangeHandler} />
+        </div>
+
       </div>
-      <div>
+      <div className="card-container">
         {countriesList}
       </div>
     </div>

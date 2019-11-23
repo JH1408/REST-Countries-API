@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {withRouter} from 'react-router-dom'
 import axios from 'axios';
 import Spinner from '../../components/Spinner/Spinner';
+import Header from '../../components/Header/Header';
 
 const SingleCountry = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +36,10 @@ const SingleCountry = (props) => {
     }).catch(err => console.log(err))
   }
 
+  const goBack = () => {
+    props.history.goBack()
+  }
+
   let singleCountry = <Spinner/>
 
   if(countryData !== null && !isLoading) {
@@ -51,13 +56,13 @@ const SingleCountry = (props) => {
 
     singleCountry = (
       <React.Fragment>
-        <div>
+        <div className="flex-container">
           <div>
             <img src={countryData.flag}/>
           </div>
           <div>
             <div>
-              <h1>{countryData.name}</h1>
+              <h2>{countryData.name}</h2>
               <p><span>Native Name: </span>{countryData.native}</p>
               <p><span>Population: </span>{countryData.population}</p>
               <p><span>Region: </span>{countryData.region}</p>
@@ -70,16 +75,18 @@ const SingleCountry = (props) => {
               <p><span>Languages: </span>{languages.join(', ')}</p>
             </div>
           </div>
-        </div>
-        <div>
-          {border.length ? <p><span>Border Countries: </span>{border}</p> : null}
+          <div>
+            {border.length ? <p><span>Border Countries: </span>{border}</p> : null}
+          </div>
         </div>
       </React.Fragment>
     )
   }
 
   return (
-    <div>
+    <div className="single-country">
+      <Header/>
+      <button onClick={goBack}>Back</button>
       {singleCountry}
     </div>
   )
