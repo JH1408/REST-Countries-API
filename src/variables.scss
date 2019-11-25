@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-$font: 'Arial';
+$font: 'Muli', sans-serif;
 
 $font-color-primary: #000;
-$font-color-secondary: #000;
+$font-color-primary-dark: #fff;
 $background-primary: rgb(241, 241, 241);
+$background-primary-dark: #232638;
 
 $background-cards: #fff;
+$background-cards-dark: #454652;
 
 $box-shadow: 0px 0px 16px 3px rgba(216, 216, 216, 0.75);
 $border-radius: 5px;

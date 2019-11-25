@@ -5,7 +5,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Header from '../../components/Header/Header';
 
-const Home = ({clicked}) => {
+const Home = ({clicked, switchMode}) => {
 
   const [countries, setCountries] = useState(null);
   const [filteredCountries, setFilteredCountries] = useState(null);
@@ -69,13 +69,17 @@ const Home = ({clicked}) => {
     setFilteredCountries(filter);
   }
 
+  const formatNumber = (num) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
+
   const countriesList = isLoading ? <Spinner/> : countries!==null && filteredCountries===null ? countries.map(country => {
     return <Card
                 key={country.code}
                 name={country.name}
                 capital={country.capital}
                 flag={country.flag}
-                population={country.population}
+                population={formatNumber(country.population)}
                 region={country.region}
                 clicked={clicked}/>
             }) : filteredCountries !== null ? filteredCountries.map( filteredCountry => {
@@ -91,7 +95,7 @@ const Home = ({clicked}) => {
 
   return (
     <div className="App">
-      <Header />
+      <Header switchMode={switchMode}/>
       <div className="form">
         <input
           placeholder="Search for a country..."

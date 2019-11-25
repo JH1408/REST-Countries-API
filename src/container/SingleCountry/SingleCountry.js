@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import axios from 'axios';
 import Spinner from '../../components/Spinner/Spinner';
 import Header from '../../components/Header/Header';
+import Arrow from '../../assets/img/icons8-long-arrow-left-32.png';
 
 const SingleCountry = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +44,6 @@ const SingleCountry = (props) => {
   let singleCountry = <Spinner/>
 
   if(countryData !== null && !isLoading) {
-    console.log(countryData.border)
     const currency = [];
     for (let i = 0; i < countryData.currency.length; i++) {
       currency.push(countryData.currency[i].name)
@@ -52,7 +52,9 @@ const SingleCountry = (props) => {
     for (let i = 0; i < countryData.languages.length; i++) {
       languages.push(countryData.languages[i].name)
     }
-    const border = countryData.border.join(', ');
+    const border = countryData.border.map(border => {
+      return <span>{border}</span>
+    })
 
     singleCountry = (
       <React.Fragment>
@@ -61,22 +63,24 @@ const SingleCountry = (props) => {
             <img src={countryData.flag}/>
           </div>
           <div>
-            <div>
-              <h2>{countryData.name}</h2>
-              <p><span>Native Name: </span>{countryData.native}</p>
-              <p><span>Population: </span>{countryData.population}</p>
-              <p><span>Region: </span>{countryData.region}</p>
-              <p><span>Subregion: </span>{countryData.subregion}</p>
-              <p><span>Capital: </span>{countryData.capital}</p>
+            <h2>{countryData.name}</h2>
+            <div className="flex-container__flex">
+              <div>
+                <p><span>Native Name: </span>{countryData.native}</p>
+                <p><span>Population: </span>{countryData.population}</p>
+                <p><span>Region: </span>{countryData.region}</p>
+                <p><span>Subregion: </span>{countryData.subregion}</p>
+                <p><span>Capital: </span>{countryData.capital}</p>
+              </div>
+              <div>
+                <p><span>Top-Level Domain: </span>{countryData.domain}</p>
+                <p><span>Currencies: </span>{currency.join(', ')}</p>
+                <p><span>Languages: </span>{languages.join(', ')}</p>
+              </div>
             </div>
-            <div>
-              <p><span>Top-Level Domain: </span>{countryData.domain}</p>
-              <p><span>Currencies: </span>{currency.join(', ')}</p>
-              <p><span>Languages: </span>{languages.join(', ')}</p>
+            <div className="flex-container__border">
+              {border.length ? <p><span>Border Countries: </span>{border}</p> : null}
             </div>
-          </div>
-          <div>
-            {border.length ? <p><span>Border Countries: </span>{border}</p> : null}
           </div>
         </div>
       </React.Fragment>
@@ -85,8 +89,9 @@ const SingleCountry = (props) => {
 
   return (
     <div className="single-country">
-      <Header/>
-      <button onClick={goBack}>Back</button>
+      <Header switchMode={props.switchMode}/>
+      <button onClick={goBack}>
+        <img src={Arrow} alt=""/>Back</button>
       {singleCountry}
     </div>
   )
