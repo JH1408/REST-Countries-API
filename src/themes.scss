@@ -2,14 +2,22 @@
 
 $themes: (
         default: (
-                bg: $background-primary,
+                bg: $background,
                 card-bg: $background-cards,
-                text: $font-color-primary,
+                text: $font-color,
+                border-cards: $border-cards,
+                boxshadow: $box-shadow,
+                boxshadow-hover: $box-shadow-hover,
+                input-bg: $background-cards,
         ),
         dark: (
-                bg: $background-primary-dark,
+                bg: $background-dark,
                 card-bg: $background-cards-dark,
-                text: $font-color-primary-dark,
+                text: $font-color-dark,
+                border-cards: $border-cards-dark,
+                boxshadow: $box-shadow-dark,
+                boxshadow-hover: $box-shadow-hover-dark,
+                input-bg: $background-cards-dark,
         ),
 );
 

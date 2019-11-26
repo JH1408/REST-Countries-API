@@ -10,7 +10,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: darken($background-primary, 10%);
+  background: darken($background, 10%);
   border-radius: 50%;
   animation: ldsDefault 1.2s linear infinite;
 }

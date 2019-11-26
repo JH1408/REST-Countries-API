@@ -68,12 +68,6 @@ body {
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @include themed() {
-    color: t('text');
-    background: t('bg');
-  }
-  // color: $font-color-primary;
-  // background: $background-primary;
   font-family: $font;
   -moz-font-feature-settings : 'palt' 1;
   font-feature-settings : 'palt' 1;
@@ -105,21 +99,21 @@ span {
 }
 
 button {
-  cursor: pointer;
   @include themed() {
     color: t('text');
     background: t('bg');
+    box-shadow: t('boxshadow')
   }
-  // background-color: $background-cards;
-  // color: $font-color-primary;
-  box-shadow: $box-shadow;
   border-radius: $border-radius;
   padding: 10px;
   font-size: 0.9rem;
+  cursor: pointer;
 }
 
 button:hover {
-  box-shadow: 0px 0px 16px 3px rgb(198, 196, 196);
+  @include themed() {
+    box-shadow: t('boxshadow-hover');
+  }
 }
 
 .App {
@@ -132,13 +126,11 @@ button:hover {
 .header {
   @include themed() {
     background: t('card-bg');
+    border-bottom: t('border')
   }
-  // background-color: $background-cards;
   display: flex;
-  padding: 20px 40px;
+  padding: 20px 40px 60px;
   justify-content: space-between;
-  border-bottom: 2px solid rgba(216, 216, 216, 0.75);
-  margin-bottom: 40px;
   div:hover {
     cursor: pointer;
   }
@@ -157,11 +149,15 @@ button:hover {
   justify-content: space-between;
   font-size: 0.9rem;
   input {
+    @include themed() {
+      box-shadow: t('boxshadow');
+      background-color: t('input-bg');
+      color: t('text');
+    }
     height: 50px;
     width: 40%;
     padding: 10px 10px 10px 45px;
     border-radius: $border-radius;
-    box-shadow: $box-shadow;
     background-image: url('./assets/img/search-solid.svg');
     background-position: 15px 13px;
     background-repeat: no-repeat;
@@ -177,7 +173,11 @@ button:hover {
     width: 200px;
     padding: 10px;
     border-radius: $border-radius;
-    box-shadow: $box-shadow;
+    @include themed() {
+      box-shadow: t('boxshadow');
+      background-color: t('input-bg');
+      color: t('text');
+    }
   }
   option {
     padding: 10px;
@@ -194,14 +194,13 @@ button:hover {
 
 .card {
   margin: 20px;
+  border-radius: $border-radius;
+  width: 250px;
   @include themed() {
     background: t('card-bg');
+    border: t('border-cards');
+    box-shadow: t('boxshadow');
   }
-  // background-color: $background-cards;
-  border: 1px solid darken($background-primary, 10%);
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  width: 250px;
   img {
     width: 248px;
     height: 150px;
@@ -220,16 +219,23 @@ button:hover {
 
 .card:hover {
   cursor: pointer;
-  box-shadow: 0px 0px 16px 3px rgb(198, 196, 196);
+  @include themed() {
+    box-shadow: t('boxshadow-hover');
+  }
 }
 
 .single-country {
-  // background-color: $background-cards;
   @include themed() {
+    color: t('text');
     background: t('card-bg');
   }
   height: 100vh;
   padding: 0 140px;
+  &__container {
+    @include themed() {
+      background-color: t('card-bg');
+    }
+  }
   .ldsDefault {
     display: block;
   }
@@ -261,10 +267,12 @@ button:hover {
     margin-top: 40px;
     span:not(:first-of-type) {
       display: inline-block;
-      border: 1px solid rgba(216, 216, 216, 0.75);
       padding: 5px 15px;
       border-radius: $border-radius;
       font-weight: normal;
+      @include themed() {
+        border: t('border-cards');
+      }
     }
     span+span {
       margin-left: 10px;

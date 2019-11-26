@@ -5,7 +5,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Header from '../../components/Header/Header';
 
-const Home = ({clicked, switchMode}) => {
+const Home = ({clicked, switchMode, isDark}) => {
 
   const [countries, setCountries] = useState(null);
   const [filteredCountries, setFilteredCountries] = useState(null);
@@ -95,7 +95,7 @@ const Home = ({clicked, switchMode}) => {
 
   return (
     <div className="App">
-      <Header switchMode={switchMode}/>
+      <Header isDark={isDark} switchMode={switchMode}/>
       <div className="form">
         <input
           placeholder="Search for a country..."

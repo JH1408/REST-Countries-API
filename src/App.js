@@ -18,10 +18,13 @@ const App = (props) => {
     <div className={'App theme ' + (isDarkTheme ? 'theme--dark' : 'theme--default')}>
       <Suspense fallback={'Loading...'}>
         <Switch>
-          <Route path="/countries" render={() => <SingleCountry switchMode={switchModeHandler}/>} />
+          <Route path="/countries" render={() => <SingleCountry
+                                                    switchMode={switchModeHandler}
+                                                    isDark={isDarkTheme}/>} />
           <Route path="/" exact render={() => <Home
                                                 clicked={showSingleCountry}
-                                                switchMode={switchModeHandler}/>} />
+                                                switchMode={switchModeHandler}
+                                                isDark={isDarkTheme}/>} />
           <Redirect to="/" />
         </Switch>
       </Suspense>

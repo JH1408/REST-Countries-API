@@ -89,10 +89,12 @@ const SingleCountry = (props) => {
 
   return (
     <div className="single-country">
-      <Header switchMode={props.switchMode}/>
-      <button onClick={goBack}>
-        <img src={Arrow} alt=""/>Back</button>
-      {singleCountry}
+      <Header isDark={props.isDark} switchMode={props.switchMode}/>
+      <div className="single-country__container">
+        <button onClick={goBack}>
+          <img src={Arrow} alt=""/>Back</button>
+        {singleCountry}
+      </div>
     </div>
   )
 }
