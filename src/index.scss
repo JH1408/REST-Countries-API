@@ -101,7 +101,7 @@ span {
 button {
   @include themed() {
     color: t('text');
-    background: t('bg');
+    background: t('card-bg');
     box-shadow: t('boxshadow')
   }
   border-radius: $border-radius;
@@ -121,6 +121,7 @@ button:hover {
     color: t('text');
     background: t('bg');
   }
+  min-height: 100vh;
 }
 
 .header {
@@ -129,7 +130,7 @@ button:hover {
     border-bottom: t('border')
   }
   display: flex;
-  padding: 20px 40px 60px;
+  padding: 20px 100px;
   justify-content: space-between;
   div:hover {
     cursor: pointer;
@@ -144,7 +145,7 @@ button:hover {
 }
 
 .form {
-  padding: 40px;
+  padding: 40px 100px;
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
@@ -153,12 +154,12 @@ button:hover {
       box-shadow: t('boxshadow');
       background-color: t('input-bg');
       color: t('text');
+      background-image: t('search-img');
     }
     height: 50px;
     width: 40%;
     padding: 10px 10px 10px 45px;
     border-radius: $border-radius;
-    background-image: url('./assets/img/search-solid.svg');
     background-position: 15px 13px;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -183,13 +184,18 @@ button:hover {
     padding: 10px;
     appearance: none;
   }
+  ::placeholder {
+    @include themed() {
+      color: t('input');
+    }
+  }
 }
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 20px;
+  padding: 20px 80px;
 }
 
 .card {
@@ -227,23 +233,27 @@ button:hover {
 .single-country {
   @include themed() {
     color: t('text');
-    background: t('card-bg');
+    background: t('bg');
   }
   height: 100vh;
-  padding: 0 140px;
   &__container {
+    @include themed() {
+      background-color: t('bg');
+    }
+    padding: 40px 140px;
+  }
+  .header {
     @include themed() {
       background-color: t('card-bg');
     }
-  }
-  .ldsDefault {
-    display: block;
+    padding: 20px 140px;
   }
   button {
-    padding: 10px 30px;
+    padding: 10px 20px;
     img {
       vertical-align: middle;
       padding-right: 10px;
+      width: 40px;
     }
   }
 }
@@ -272,6 +282,7 @@ button:hover {
       font-weight: normal;
       @include themed() {
         border: t('border-cards');
+        background-color: t('card-bg');
       }
     }
     span+span {

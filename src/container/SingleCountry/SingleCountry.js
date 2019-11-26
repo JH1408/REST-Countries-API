@@ -3,7 +3,8 @@ import {withRouter} from 'react-router-dom'
 import axios from 'axios';
 import Spinner from '../../components/Spinner/Spinner';
 import Header from '../../components/Header/Header';
-import Arrow from '../../assets/img/icons8-long-arrow-left-32.png';
+import Arrow from '../../assets/img/icons8-left-50.png';
+import ArrowWhite from '../../assets/img/icons8-left-50 (1).png';
 
 const SingleCountry = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +13,7 @@ const SingleCountry = (props) => {
   useEffect(() => {
     const url = props.history.location.pathname;
     getCountry(url.substring(url.lastIndexOf('/')+1));
+    props.checkPreferences();
   }, [])
 
 
@@ -60,7 +62,7 @@ const SingleCountry = (props) => {
       <React.Fragment>
         <div className="flex-container">
           <div>
-            <img src={countryData.flag}/>
+            <img src={countryData.flag} alt=""/>
           </div>
           <div>
             <h2>{countryData.name}</h2>
@@ -92,7 +94,7 @@ const SingleCountry = (props) => {
       <Header isDark={props.isDark} switchMode={props.switchMode}/>
       <div className="single-country__container">
         <button onClick={goBack}>
-          <img src={Arrow} alt=""/>Back</button>
+          <img src={props.isDark ? ArrowWhite : Arrow} alt=""/>Back</button>
         {singleCountry}
       </div>
     </div>

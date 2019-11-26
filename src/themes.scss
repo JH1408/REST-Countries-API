@@ -9,6 +9,8 @@ $themes: (
                 boxshadow: $box-shadow,
                 boxshadow-hover: $box-shadow-hover,
                 input-bg: $background-cards,
+                input: rgb(153, 153, 153),
+                search-img: url('./assets/img/search-solid.svg'),
         ),
         dark: (
                 bg: $background-dark,
@@ -18,6 +20,9 @@ $themes: (
                 boxshadow: $box-shadow-dark,
                 boxshadow-hover: $box-shadow-hover-dark,
                 input-bg: $background-cards-dark,
+                input: $font-color-dark,
+                search-img: url('./assets/img/search-solid-white.svg'),
+
         ),
 );
 

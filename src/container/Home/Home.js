@@ -5,7 +5,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Header from '../../components/Header/Header';
 
-const Home = ({clicked, switchMode, isDark}) => {
+const Home = ({clicked, switchMode, isDark, checkPreferences}) => {
 
   const [countries, setCountries] = useState(null);
   const [filteredCountries, setFilteredCountries] = useState(null);
@@ -14,6 +14,7 @@ const Home = ({clicked, switchMode, isDark}) => {
 
   useEffect(() => {
     getCountries();
+    checkPreferences();
   }, [])
 
   useEffect(() => {
